@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const app = express();
 
 const cors = require("cors");
-
+// add comments
 var pool = mysql.createPool({
   connectionLimit: 5,
   host: "localhost",
