@@ -57,7 +57,7 @@ app.get("/:id", (req, res) => {
 
 app.get("/taxonomy_parent/:id", (req, res) => {
   let id = req.params.id;
-  let sql = `SELECT * FROM taxonomy.nodes where parent_tax_id = ${id}`;
+  let sql = `SELECT * From taxonomy.nodes INNER JOIN taxonomy.tax_names ON tax_names.tax_id=nodes.tax_id WHERE tax_names.tax_id = ${id} and name_class = 'scientific name';
 
   pool.query(sql, (error, results, fields) => {
     if (error) {
